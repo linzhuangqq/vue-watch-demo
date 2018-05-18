@@ -1,0 +1,48 @@
+{
+  "name": "vue-watch-demo",
+  "version": "0.0.1",
+  "description": "vue-watch-demo",
+  "scripts": {
+    "fix": "npm run lint -- --fix",
+    "na": "nyc ava ./test",
+    "pretest": "npm run lint",
+    "build": "rollup -c",
+    "lint": "standard rollup.config.js test/** src/**",
+    "test": "npm run lint && npm run build && nyc ava ./test"
+  },
+  "standard": {
+    "ignore": [
+      "src/**/*.md"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "nyc": "^10.0.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "standard": "^8.5.0",
+    "watch-cli": "^0.2.1"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": "inherit"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      [
+        "transform-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  }
+}
